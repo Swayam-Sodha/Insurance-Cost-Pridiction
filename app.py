@@ -28,6 +28,8 @@ smoker = st.radio(
     [":green[Yes]", ":red[No]"]
 )
 region = st.selectbox("Region", ["northeast", "southeast", "northwest", "southwest"])
+sex = sex.lower()
+smoker = smoker.lower()
 
 if st.button("Predict"):
     sample = pd.DataFrame([{
@@ -37,6 +39,7 @@ if st.button("Predict"):
     sample_prepared = preprocessor.transform(sample)
     prediction = model.predict(sample_prepared)[0]
     st.success(f"Estimated Insurance Cost: ${prediction:,.2f}")
+
 
 
 
