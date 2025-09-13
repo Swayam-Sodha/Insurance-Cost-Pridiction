@@ -12,6 +12,7 @@ with open("insurance_model.pkl", "rb") as f:
 # Streamlit UI
 # -------------------------------
 st.title("💊 Medical Insurance Cost Predictor")
+st.subheader("By Swayam Sodha")
 
 age = st.number_input("Age", min_value=1, max_value=100, value=30)
 sex = st.selectbox("Sex", ["male", "female"])
@@ -28,3 +29,4 @@ if st.button("Predict"):
     sample_prepared = preprocessor.transform(sample)
     prediction = model.predict(sample_prepared)[0]
     st.success(f"Estimated Insurance Cost: ${prediction:,.2f}")
+
