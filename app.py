@@ -15,10 +15,18 @@ st.title("💊 Medical Insurance Cost Predictor")
 st.subheader("By Swayam Sodha")
 
 age = st.number_input("Age", min_value=1, max_value=100, value=30)
-sex = st.selectbox("Sex", ["male", "female"])
+# sex = st.selectbox("Sex", ["male", "female"])
+sex = st.radio(
+    "Sex",
+    ["Male", "Female"]
+)
 bmi = st.number_input("BMI", min_value=10.0, max_value=60.0, value=25.0)
 children = st.number_input("Children", min_value=0, max_value=10, value=0)
-smoker = st.selectbox("Smoker", ["yes", "no"])
+# smoker = st.selectbox("Smoker", ["yes", "no"])
+smoker = st.radio(
+    "Smoker",
+    [":green[Yes]", "No"]
+)
 region = st.selectbox("Region", ["northeast", "southeast", "northwest", "southwest"])
 
 if st.button("Predict"):
@@ -29,4 +37,5 @@ if st.button("Predict"):
     sample_prepared = preprocessor.transform(sample)
     prediction = model.predict(sample_prepared)[0]
     st.success(f"Estimated Insurance Cost: ${prediction:,.2f}")
+
 
