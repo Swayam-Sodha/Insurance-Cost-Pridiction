@@ -25,7 +25,7 @@ children = st.number_input("Children", min_value=0, max_value=10, value=0)
 # smoker = st.selectbox("Smoker", ["yes", "no"])
 smoker = st.radio(
     "Smoker",
-    [":green[Yes]", "No"]
+    [":green[Yes]", ":red[No]"]
 )
 region = st.selectbox("Region", ["northeast", "southeast", "northwest", "southwest"])
 
@@ -37,5 +37,6 @@ if st.button("Predict"):
     sample_prepared = preprocessor.transform(sample)
     prediction = model.predict(sample_prepared)[0]
     st.success(f"Estimated Insurance Cost: ${prediction:,.2f}")
+
 
 
